@@ -9,4 +9,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
             redirect_to new_user_registration_path #or should it be url?
         end
     end
+
+    def failure
+        redirect_to root_path, notice: 'Could not authenticate you'
+    end
 end
