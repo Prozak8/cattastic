@@ -3,6 +3,11 @@ Coveralls.wear_merged!('rails')
 
 require 'cucumber/rails'
 
+Before do 
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new(OmniAuthFixtures.facebook_mock)
+end
+
 ActionController::Base.allow_rescue = false
 
 begin
