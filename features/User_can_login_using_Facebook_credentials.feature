@@ -5,7 +5,6 @@ Feature: User can log in using hers/his Facebook credentials
 
 
 Scenario: Visitor clicks on 'Login with Facebook' and gets authenticated
-    Given I visit the site
-    And I click "Login with Facebook"
-    Then I should be redirected to index page
+    Given I am on the landing page
+    Then I click "Login with Facebook"
     And I should see "Successfully authenticated from Facebook account" 
