@@ -13,3 +13,7 @@ end
 When("I fill in {string} with {string}") do |field, data|
     fill_in field, with: data
 end
+
+Given("the facebook authentication is not granted") do
+    OmniAuth.config.mock_auth[:facebook] = :invalid_credentials
+end

@@ -12,6 +12,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'haml-rails'
 gem 'rest-client'
 gem 'devise'
+gem 'omniauth-facebook', '~> 5.0'
 
 group :development, :test do
   gem 'coveralls', require: false

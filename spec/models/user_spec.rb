@@ -1,4 +1,5 @@
 require 'rails_helper'
+require './features/support/omni_auth_fixtures'
 
 RSpec.describe User, type: :model do
   it { is_expected.to have_db_column :email }
@@ -14,4 +15,14 @@ RSpec.describe User, type: :model do
       expect(create(:user)).to be_valid 
     end
   end
+
+  describe 'OAuth methods' do 
+    let(:auth_response) {OmniAuth::AuthHash.new(OmniAuthFixtures.facebook_mock)}
+    it "creates an instance from an oauth hash" do
+      create_user = lambda {User.from_omniauth(auth_response)
+      }
+      expect{create_user.call}.to change{User.count}.from(0).to(1)
+    end
+  end
+
 end
