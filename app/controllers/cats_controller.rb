@@ -6,16 +6,6 @@ class CatsController < ApplicationController
   def index
   end
 
-  def upvote
-    @cat.upvote_from current_user
-    redirect_to root_path
-  end
-
-  def downvote
-    @cat.downvote_from current_user
-    redirect_to root_path
-  end
-
   private
 
   def set_cats
@@ -24,4 +14,15 @@ class CatsController < ApplicationController
       cat= Cat.create(url: cat['url']) unless Cat.exists?(url: cat['url'])
     end
   end
+end
+
+def upvote(set_cats)
+  require @set_cats
+  @cat.upvote_from current_user
+  redirect_to root_path
+end
+
+def downvote
+  @cat.downvote_from current_user
+  redirect_to root_path
 end
