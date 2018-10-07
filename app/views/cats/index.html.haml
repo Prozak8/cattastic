@@ -7,5 +7,10 @@
         - @cats.each do |cat|
             .div.grid-content
                 = image_tag cat['url']
+                = link_to like_cat_path(cat), class: "like", method: put do
+                    %button.btn.btn-info{"aria-label" => "Left Align", :type => "button"}
+                        %span.badge= cat.get_upvotes.size
 
+                
 = render 'partials/categories'
+
